@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form #signUpForm="ngForm" (ngSubmit)="signUpForm.form.valid && onSubmit(signUpForm.form.value)" novalidate>
+              <h1>Sign Up</h1>
+              <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="firstName"
+                  class="form-control"
+                  placeholder="Enter First Name"
+                  name="firstName"
+                  [(ngModel)]="signupCredentials.firstName"
+                  #firstName="ngModel"
+                  required>
+                  <div *ngIf="signUpForm.submitted && !firstName.valid" class="form-text text-danger">First Name is required</div>
+               </div>
+               <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="lastName"
+                class="form-control"
+                placeholder="Enter Last Name"
+                name="lastName"
+                [(ngModel)]="signupCredentials.lastName"
+                #lastName="ngModel"
+                required>
+                <div *ngIf="signUpForm.submitted && !lastName.valid" class="form-text text-danger">Last Name is required</div>
+             </div>
+                <div class="form-group">
+                   <label for="email">Email</label>
+                   <input type="email"
+                   class="form-control"
+                   placeholder="Enter email address"
+                   name="email"
+                   [(ngModel)]="signupCredentials.email"
+                   #email="ngModel"
+                   pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                   required>
+                   <div *ngIf="signUpForm.submitted && email.errors && email.errors.required" class="form-text text-danger">Email is required</div>
+                   <div *ngIf="signUpForm.submitted && email.errors && email.errors.pattern"  class="form-text text-danger">Invalid email</div>
+                </div>
+                <div class="form-group">
+                     <label for="password">Password</label>
+                     <input type="password"
+                     class="form-control"
+                     placeholder="Enter the password"
+                     name="password"
+                     [(ngModel)]="signupCredentials.password"
+                     #password="ngModel"
+                     ioPasswordMatch="verifyPwd"
+                     reverse = true
+                     required>
+                     <div *ngIf="signUpForm.submitted && !password.valid" class="form-text text-danger">Password is required</div>
+
+                </div>
+                <div class="form-group">
+                    <label for="verifyPwd">Confirm Password</label>
+                    <input type="password"
+                    class="form-control"
+                    placeholder="Confirm the password"
+                    name="verifyPwd"
+                    [(ngModel)]="signupCredentials.verfiyPassword"
+                    #verifyPwd="ngModel"
+                    ioPasswordMatch="password"
+                    required>
+                    <div *ngIf="signUpForm.submitted && !verifyPwd.valid && (signupCredentials.password!=signupCredentials.verfiyPassword)" class="text-danger">
+                        Password mismatch
+                    </div>
+               </div>
+                <button type="submit" class="btn btn-default">Register</button>
+            </form>
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('manager App', () => {
+describe('expense-manager App', () => {
   let page: AppPage;
 
   beforeEach(() => {

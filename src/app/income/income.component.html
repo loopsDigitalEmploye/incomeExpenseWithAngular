@@ -1,0 +1,51 @@
+<div class="add-income">
+  <form #addForm="ngForm"  (ngSubmit)="addForm.form.valid && onSubmit(addForm.form.value)" novalidateclass class="form-inline">
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <input 
+         type="text" 
+         name="category"
+         class="form-control" 
+         id="category"
+         #category="ngModel"
+         [(ngModel)]="incomeCredentials.category"
+         required>
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount:</label>
+      <input 
+         type="number" 
+         name="amount"
+         class="form-control" 
+         id="amount"
+         #amount="ngModel"
+         [(ngModel)]="incomeCredentials.amount"
+         required>
+    </div>
+    <div class="form-group">
+      <label>Tags:</label>
+      <rl-tag-input name="tags" class="form-control" #tags="ngModel"[(ngModel)]="incomeCredentials.tags"></rl-tag-input>  
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Tags</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let income of incomes;">
+      <td>{{income?.category}}</td>
+      <td>{{income?.createdOn | date: 'dd/MM/yyyy'}}</td>
+      <td>Rs. {{income?.amount}}</td>
+      <td>{{income?.tags}}</td> 
+    </tr>
+ </table>
+</div>

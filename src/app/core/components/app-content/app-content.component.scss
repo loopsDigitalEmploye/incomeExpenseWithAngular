@@ -1,0 +1,20 @@
+:host{
+  display: flex;
+  flex-direction: column;
+
+  .page-container{
+      min-width: 970px;
+      flex: 1;
+      padding: 40px 0;
+  }
+}
+
+
+@media (max-width: 970px){
+  :host{
+      .page-container{
+          min-width: 990px;
+          padding: 60px 20px;
+      }
+  }
+}

@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div [routerLink]="['/']" class="navbar-brand">Home</div>
+    </div>
+    <ul class="nav navbar-nav">
+      <li [routerLink]="['/incomes']"><a>Income</a></li>
+      <li [routerLink]="['/expenses']"><a>Expense</a></li>
+      <li [routerLink]="['/report']"><a> Report </a></li>
+    </ul>
+    <button *ngIf="!isLoggedIn()" [routerLink]="['/login']" style="margin-right:20px;"class="btn btn-primary navbar-btn pull-right">Sign In</button>
+    <button *ngIf="!isLoggedIn()" [routerLink]="['/signup']" style="margin-right:20px;" class="btn btn-primary navbar-btn pull-right" >Register</button>
+    <button (click)="logout()" *ngIf="isLoggedIn()" class="btn btn-primary navbar-btn pull-right">Logout</button>
+  </div>
+</nav>
+
+
+
